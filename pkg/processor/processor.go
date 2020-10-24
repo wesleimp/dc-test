@@ -47,7 +47,7 @@ func doRequest(payload *Payload, now time.Time) (string, int, error) {
 		return "", 0, err
 	}
 	request.Header.Add("Content-Type", "application/json")
-	request.Header.Add("x-Set", formatRequestDate(now))
+	request.Header.Add("x-Sent", formatRequestDate(now))
 
 	client := &http.Client{}
 	response, err := client.Do(request)
@@ -62,7 +62,6 @@ func doRequest(payload *Payload, now time.Time) (string, int, error) {
 	}
 
 	return string(bts), response.StatusCode, nil
-
 }
 
 func formatRequestDate(date time.Time) string {

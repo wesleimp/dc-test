@@ -26,7 +26,6 @@ func Post(service order.Service) gin.HandlerFunc {
 		if len(errs) > 0 {
 			c.JSON(http.StatusBadRequest, map[string]interface{}{"errors": errs})
 			return
-
 		}
 
 		err = service.Create(c.Request.Context(), order)
@@ -43,7 +42,6 @@ func Post(service order.Service) gin.HandlerFunc {
 		if status >= 400 {
 			c.JSON(status, map[string]interface{}{"errors": []string{res}})
 			return
-
 		}
 
 		c.JSON(status, string(res))

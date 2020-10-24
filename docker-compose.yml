@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+    postgres:
+        image: postgres:latest
+        ports: 
+            - 5432:5432
+        restart: unless-stopped
+        environment: 
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_DB: "dctest"
+        networks: 
+            - ingress
+
+
+networks:
+    ingress:
+        driver: bridge
